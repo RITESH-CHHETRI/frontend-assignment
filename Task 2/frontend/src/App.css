@@ -1,3 +1,7 @@
+body {
+  background-color: #f0f0f0; /* Grey background color */
+}
+
 .App {
   text-align: center;
 }
@@ -25,6 +29,8 @@
 .App-link {
   color: rgb(112, 76, 182);
 }
+
+
 
 @keyframes App-logo-float {
   0% {

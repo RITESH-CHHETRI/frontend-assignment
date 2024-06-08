@@ -1,6 +1,7 @@
-// src/components/UserForm.js
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Import Link and useHistory for routing
 import axios from 'axios';
+import './UserForm.css'; // Import CSS file for styling
 
 const UserForm = () => {
   const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ const UserForm = () => {
   const [loading, setLoading] = useState(false); // Loading state
   const [errorMessage, setErrorMessage] = useState(''); // Error message state
   const [successMessage, setSuccessMessage] = useState(''); // Success message state
+  const history = useNavigate(); // Access history object for redirection
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,9 @@ const UserForm = () => {
       const response = await axios.post('http://localhost:5000/register', { username, password });
       console.log(response.data); // Log the entire response object
       setSuccessMessage('Registration successful. Check your email for further instructions.'); // Display success message
+      localStorage.setItem('authToken', response.data.token);
+      // Redirect to the images page after successful registration
+      history('/images');
     } catch (error) {
       console.error(error); // Log the entire error object for debugging
       if (error.response) {
@@ -43,7 +48,7 @@ const UserForm = () => {
   };
 
   return (
-    <div>
+    <div className="user-registration-container" style={{marginTop:30}}>
       <h2>User Registration</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
@@ -69,8 +74,9 @@ const UserForm = () => {
         <button type="submit" disabled={loading}>Register</button>
       </form>
       {loading && <p>Loading...</p>}
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      <Link to="/login">Already have an account? Login Instead</Link> {/* Add Link to login page */}
     </div>
   );
 };

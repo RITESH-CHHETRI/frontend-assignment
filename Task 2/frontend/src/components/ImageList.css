@@ -1,0 +1,103 @@
+/* Container and general layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Align header and logout button to the opposite ends */
+  align-items: center; /* Vertically center the content */
+  padding: 20px;
+}
+
+/* Heading */
+.heading {
+  font-size: 2em;
+  margin: 0; /* Remove default margin */
+  margin-right: auto; /* Push heading to the left-most side */
+}
+
+/* Logout button styling */
+.logout-button {
+  padding: 8px 16px;
+  background-color: #f44336; /* Red color for logout button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.logout-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Upload form styling */
+.upload-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-form input[type="file"] {
+  margin-right: 10px;
+}
+
+.upload-form button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.upload-form button:hover {
+  background-color: #45a049;
+}
+
+/* Image list styling */
+.image-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-card {
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+/* Delete button styling */
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.delete-button:hover {
+  color: darkred;
+}
